@@ -174,16 +174,6 @@ class ApiResourceList extends \ArrayObject
         }
     }
 
-    public function asort()
-    {
-        asort($this->items);
-    }
-
-    public function ksort()
-    {
-        ksort($this->items);
-    }
-
     public function offsetUnset($key)
     {
         unset($this->items[$key]);

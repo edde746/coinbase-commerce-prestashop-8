@@ -151,16 +151,6 @@ class ApiResource extends \ArrayObject
         return count($this->attributes);
     }
 
-    public function asort()
-    {
-        asort($this->attributes);
-    }
-
-    public function ksort()
-    {
-        ksort($this->attributes);
-    }
-
     public function offsetUnset($key)
     {
         unset($this->attributes[$key]);

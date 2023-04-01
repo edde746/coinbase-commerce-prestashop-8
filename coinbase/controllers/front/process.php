@@ -31,7 +31,7 @@ class CoinbaseProcessModuleFrontController extends ModuleFrontController
             $this->module->displayName,
             null,
             null,
-            (int)$cart->id_currency,
+            (int) $cart->id_currency,
             false,
             $customer->secure_key
         );
@@ -62,6 +62,7 @@ class CoinbaseProcessModuleFrontController extends ModuleFrontController
             return $item['cart_quantity'] . ' × ' . $item['name'];
         }, $cart->getProducts());
 
+
         $orderId = method_exists('Order', 'getOrderByCartId') ?
             Order::getOrderByCartId($cart->id) : Order::getIdByCartId($cart->id);
 
@@ -72,7 +73,7 @@ class CoinbaseProcessModuleFrontController extends ModuleFrontController
             ),
             'pricing_type' => 'fixed_price',
             'name' => Configuration::get('PS_SHOP_NAME') . ' order #' . $orderId,
-            'description' => join($products, ', '),
+            'description' => implode(', ', $products),
             'metadata' => [
                 METADATA_SOURCE_PARAM => METADATA_SOURCE_VALUE,
                 METADATA_INVOICE_ID_PARAM => $orderId,
